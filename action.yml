@@ -1,0 +1,69 @@
+name: Saucectl Run Action
+description: A GitHub action to run your tests locally or on Sauce Labs
+author: devx@saucelabs.com
+branding:
+    icon: check-circle
+    color: red
+inputs:
+  saucectl-version:
+    description: 'Version of saucectl to use. Example: v0.25.1'
+    default: latest
+    required: false
+  sauce-username:
+    description: Sauce Labs user name.
+    required: false
+  sauce-access-key:
+    description: Sauce Labs API Key.
+    required: false
+  working-directory:
+    description: Folder in-which saucectl will be run.
+    default: .
+    required: false
+  config-file:
+    description: Configuration file to use with saucectl
+    default: .sauce/config.yml
+    required: false
+  region:
+    description: The Sauce Labs region.
+    required: false
+  testing-environment:
+    description: "[deprecated] Testing Environment"
+    required: false
+  concurrency:
+    description: Controls how many suites run in parallel.
+    required: false
+  sauceignore:
+    description: Specifies the path to the .sauceignore file
+    required: false
+  timeout:
+    description: test timeout in seconds
+    required: false
+  tunnel-id:
+    description: Sets the sauce-connect tunnel ID to be used for the run
+    required: false
+  tunnel-parent:
+    description: Sets the sauce-connect tunnel parent to be used for the run
+    required: false
+  skip-run:
+    description: Skip execution of saucectl (only install binary)
+    default: "false"
+    required: false
+  suite:
+    description: "[deprecated] Suite to be tested"
+    required: false
+  select-suite:
+    description: Suite to be tested
+    required: false
+  env:
+    description: Environment variables to pass to saucectl
+    required: false
+  showConsoleLog:
+    description: Display console.log when tests succeed
+    required: false
+    default: "false"
+  logDir:
+    description: Path where to store logs
+    required: false
+runs:
+  using: 'node16'
+  main: 'dist/main/index.js'
